@@ -14,6 +14,22 @@
     <style type="text/css">
     </style>
     <script type="text/javascript">
+        jQuery(document).ready(function(jq){
+            jQuery("#entryPointDisabled input").attr('disabled','disabled');
+            jQuery("#entryPointDisabled input").css('background-color','#A9A9A9');
+
+            jQuery("#entryPoint select").change(function(){
+                var entryPointValue=jQuery("#entryPoint select").val();
+                if(entryPointValue==="5622"){
+                    jQuery("#entryPointDisabled input").removeAttr('disabled');
+                    jQuery("#entryPointDisabled input").css('background-color','#fff');
+                }
+                else{
+                    jQuery("#entryPointDisabled input").attr('disabled','disabled');
+                    jQuery("#entryPointDisabled input").css('background-color','#A9A9A9');
+                }
+            });
+        });
 
     </script>
     <div id="main-div">
@@ -57,9 +73,10 @@
                         <td>Entry point:
                             <obs conceptId="160540AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                                  answerConceptIds="160539AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160539AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160546AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,5485AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160457AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160542AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,159938AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,159938AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                                 answerLabels="VCT, TB Clinic, STI Clinic, In-patient, Pediatric, OPD,Index Testing, Nutrition, Other(Specify)"/>
+                                 answerLabels="VCT, TB Clinic, STI Clinic, In-patient, Pediatric, OPD,Index Testing, Nutrition, Other(Specify)"
+                                 id="entryPoint"   />
                         </td>
-                        <td colspan="2">Other:
+                        <td colspan="2">Other(Specify):
                             <span class="required">*</span>
                             <span class="">
                                 <obs id="entryPointDisabled"
