@@ -13,47 +13,71 @@
 
     <style type="text/css">
         .familyName > input{
-            min-width:100px;
+        min-width:100px;
         }
         .sex > select{
-            min-width: 60px;
+        min-width: 60px;
         }
         .onART > select{
-            min-width: 60px;
+        min-width: 60px;
         }
         .hivStatus > select{
-            min-width: 60px;
+        min-width: 60px;
         }
     </style>
     <script type="text/javascript">
-        jQuery(document).ready(function(jq){
-            jQuery("#entryPointDisabled input").attr('disabled','disabled');
-            jQuery("#entryPointDisabled input").css('background-color','#A9A9A9');
+        jQuery(document).ready(function(){
+        jQuery("#entryPointDisabled input").attr('disabled','disabled');
+        jQuery("#entryPointDisabled input").css('background-color','#A9A9A9');
 
-            jQuery("#entryPoint select").change(function(){
-                var entryPointValue=jQuery("#entryPoint select").val();
-                if(entryPointValue==="5622"){
-                    jQuery("#entryPointDisabled input").removeAttr('disabled');
-                    jQuery("#entryPointDisabled input").css('background-color','#fff');
-                }
-                else{
-                    jQuery("#entryPointDisabled input").attr('disabled','disabled');
-                    jQuery("#entryPointDisabled input").css('background-color','#A9A9A9');
-                }
-            });
-            jQuery("#occupationOtherDisabled input").attr('disabled','disabled');
-            jQuery("#occupationOtherDisabled input").css('background-color','#A9A9A9');
-            jQuery("#occupation select").change(function(){
-                var occupationValue=jQuery("#occupation select").val();
-                if(occupationValue==="5622"){
-                    jQuery("#occupationOtherDisabled input").removeAttr('disabled');
-                    jQuery("#occupationOtherDisabled input").css('background-color','#fff');
-                }
-                else{
-                    jQuery("#occupationOtherDisabled input").attr('disabled','disabled');
-                    jQuery("#occupationOtherDisabled input").css('background-color','#A9A9A9');
-                }
-            });
+        jQuery("#entryPoint select").change(function(){
+        var entryPointValue=jQuery("#entryPoint select").val();
+        if(entryPointValue==="5622"){
+        jQuery("#entryPointDisabled input").removeAttr('disabled');
+        jQuery("#entryPointDisabled input").css('background-color','#fff');
+        }
+        else{
+        jQuery("#entryPointDisabled input").attr('disabled','disabled');
+        jQuery("#entryPointDisabled input").css('background-color','#A9A9A9');
+        }
+        });
+        jQuery("#occupationOtherDisabled input").attr('disabled','disabled');
+        jQuery("#occupationOtherDisabled input").css('background-color','#A9A9A9');
+        jQuery("#occupation select").change(function(){
+        var occupationValue=jQuery("#occupation select").val();
+        if(occupationValue==="5622"){
+        jQuery("#occupationOtherDisabled input").removeAttr('disabled');
+        jQuery("#occupationOtherDisabled input").css('background-color','#fff');
+        }
+        else{
+        jQuery("#occupationOtherDisabled input").attr('disabled','disabled');
+        jQuery("#occupationOtherDisabled input").css('background-color','#A9A9A9');
+        }
+        });
+        });
+
+        jQuery('.add').click(function(e) { //Handle add button event
+        e.preventDefault();
+        $thisRow = jQuery(this).parents('tr:first');
+        $nextRow = $thisRow.next();
+
+        if ($nextRow.length &gt; 0) {
+        $nextRow.show('slow');
+        $thisRow.find('.add').hide();
+        }
+        showAddButtonForLastVisibleRow($thisRow.parents('table:first'));
+        });
+
+        jQuery('.remove').click(function(e) { //Handle remove button event
+        e.preventDefault();
+        $thisRow = jQuery(this).parents('tr:first');
+        if (confirm('Are you sure you want to remove this record? All fields for this record will be cleared.') == 1) {
+        $thisRow = jQuery(this).parents('tr:first');
+        $thisRow.hide('slow', function() {
+        showAddButtonForLastVisibleRow($thisRow.parents('table:first'));
+        fieldHelper.clearAllFields($thisRow);
+        });
+        }
         });
 
     </script>
@@ -97,7 +121,7 @@
                             <obs conceptId="160540AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                                  answerConceptIds="160539AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160539AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160546AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,5485AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160457AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160542AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,159938AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,159938AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                                  answerLabels="VCT, TB Clinic, STI Clinic, In-patient, Pediatric, OPD,Index Testing, Nutrition, Other(Specify)"
-                                 id="entryPoint"   />
+                                 id="entryPoint"/>
                         </td>
                         <td colspan="2">Other(Specify):
                             <span class="required">*</span>
@@ -185,7 +209,7 @@
                             <obs conceptId="1542AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                                  answerConceptIds="123801AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,159465AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160295AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,159673AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,159673AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                                  answerLabels="Unemployed,Student,Housewife,Military,Other Uninformed Forces,Business,Farmer,Other (specify)"
-                               id="occupation" /> <!--TODO The concept ID (Military and Other Uniformed Forces) is a placeholder and needs to be removed-->
+                                 id="occupation"/> <!--TODO The concept ID (Military and Other Uniformed Forces) is a placeholder and needs to be removed-->
                         </td>
                         <td>Other(Specify field):
                             <span class="required">*</span>
@@ -213,34 +237,36 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!--<repeat>-->
-                        <tr>
-                            <td class="familyName">
-                                <obs conceptId="160750AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
-                            </td>
-                            <td class="age">
-                                <obs conceptId="160751AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
-                            </td>
-                            <td class="sex">
-                                <obs conceptId="1533AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
-                            </td>
-                            <td class="hivStatus">
-                                <obs conceptId="1169AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                                     answerConceptIds="703AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,664AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                                     answerLabels="Positive,Negative,Unknown"/>
-                            </td>
-                            <td class="onART">
-                                <obs conceptId="160119AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                                     answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                                     answerLabels="Yes,No"/>
-                            </td>
-                            <td class="action">
-                                <a href="#" class="add">Add</a>
-                                |
-                                <a href="#" class="remove">Remove</a>
-                            </td>
-                        </tr>
-                        <!--</repeat>-->
+                        <repeat>
+                            <template>
+                                <tr>
+                                    <td class="familyName">
+                                        <obs conceptId="160750AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+                                    </td>
+                                    <td class="age">
+                                        <obs conceptId="160751AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+                                    </td>
+                                    <td class="sex">
+                                        <obs conceptId="1533AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+                                    </td>
+                                    <td class="hivStatus">
+                                        <obs conceptId="1169AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                             answerConceptIds="703AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,664AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                             answerLabels="Positive,Negative,Unknown"/>
+                                    </td>
+                                    <td class="onART">
+                                        <obs conceptId="160119AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                             answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                             answerLabels="Yes,No"/>
+                                    </td>
+                                    <td class="action">
+                                        <a href="#" class="add">Add</a>
+                                        |
+                                        <a href="#" class="remove">Remove</a>
+                                    </td>
+                                </tr>
+                            </template>
+                        </repeat>
                     </tbody>
                 </table>
             </fieldset>
@@ -331,7 +357,7 @@
                     <tr>
                         <td>
                             Weigth(kgs):
-                            <obs conceptId="5089AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" />
+                            <obs conceptId="5089AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
                         </td>
                     </tr>
                     <tr>
@@ -342,8 +368,8 @@
                     </tr>
                     <tr>
                         <td>
-                           CD4 Count:
-                            <obs conceptId="5497AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" />
+                            CD4 Count:
+                            <obs conceptId="5497AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
                         </td>
                     </tr>
                 </table>
