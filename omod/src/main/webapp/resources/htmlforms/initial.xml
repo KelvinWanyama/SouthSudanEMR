@@ -29,6 +29,19 @@
                     jQuery("#entryPointDisabled input").css('background-color','#A9A9A9');
                 }
             });
+            jQuery("#occupationOtherDisabled input").attr('disabled','disabled');
+            jQuery("#occupationOtherDisabled input").css('background-color','#A9A9A9');
+            jQuery("#occupation select").change(function(){
+                var occupationValue=jQuery("#occupation select").val();
+                if(occupationValue==="5622"){
+                    jQuery("#occupationOtherDisabled input").removeAttr('disabled');
+                    jQuery("#occupationOtherDisabled input").css('background-color','#fff');
+                }
+                else{
+                    jQuery("#occupationOtherDisabled input").attr('disabled','disabled');
+                    jQuery("#occupationOtherDisabled input").css('background-color','#A9A9A9');
+                }
+            });
         });
 
     </script>
@@ -36,7 +49,7 @@
         <div class="headers" style="text-align: center;">
             <h3 style="background:  #00b4ef; padding: 10px; color: #fff;">HIV Care and ART Card</h3>
         </div>
-        <div>
+        <div style="display:none;">
             <fieldset>
                 <legend>Encounter Details</legend>
                 <table>
@@ -53,8 +66,6 @@
                     </tr>
                 </table>
             </fieldset>
-
-
         </div>
         <div>
             <fieldset>
@@ -63,7 +74,7 @@
                     <tr>
                         <td>
                             Date first tested HIV+ :
-                            <obs conceptId="160554AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+                            <obs conceptId="164400AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
                         </td>
                         <td colspan="2">Place:
                             <obs conceptId="161549AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
@@ -153,7 +164,7 @@
                             Marital Status:
                             <obs conceptId="1054AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                                  answerConceptIds="5615AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,5555AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,159715AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1058AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1059AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1175AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                                 answerLabels="Single,Married Monogamous,Polygamous,Divorced,Widowed, Not Applicable"/>
+                                 answerLabels="Single,Married Monogamous,Polygamous,Divorced/Separated,Widowed, Not Applicable"/>
                         </td>
                     </tr>
                     <tr>
@@ -161,12 +172,13 @@
                             Occupation:
                             <obs conceptId="1542AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                                  answerConceptIds="123801AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,159465AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160295AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,159673AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,159673AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                                 answerLabels="Unemployed,Student,Housewife,Military,Other Uninformed Forces,Business,Farmer,Other (specify)"/> <!--TODO The concept ID (Military and Other Uniformed Forces) is a placeholder and needs to be removed-->
+                                 answerLabels="Unemployed,Student,Housewife,Military,Other Uninformed Forces,Business,Farmer,Other (specify)"
+                               id="occupation" /> <!--TODO The concept ID (Military and Other Uniformed Forces) is a placeholder and needs to be removed-->
                         </td>
                         <td>Other(Specify field):
                             <span class="required">*</span>
                             <span class="">
-                                <obs id="entryPointDisabled"
+                                <obs id="occupationOtherDisabled"
                                      conceptId="160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/> <!--TODO The concept ID is a placeholder and needs to be removed-->
                             </span>
                         </td>
