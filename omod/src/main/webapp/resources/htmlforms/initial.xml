@@ -12,6 +12,18 @@
           formLabel="HIV Care and ART Card">
 
     <style type="text/css">
+        .familyName > input{
+            min-width:100px;
+        }
+        .sex > select{
+            min-width: 60px;
+        }
+        .onART > select{
+            min-width: 60px;
+        }
+        .hivStatus > select{
+            min-width: 60px;
+        }
     </style>
     <script type="text/javascript">
         jQuery(document).ready(function(jq){
@@ -189,7 +201,7 @@
         <div>
             <fieldset>
                 <legend>General Family Information</legend> <!--TODO Revisit this section tomorrow -->
-                <table>
+                <table style="width:100%">
                     <thead>
                         <tr>
                             <th>Family Member Name</th>
@@ -203,26 +215,26 @@
                     <tbody>
                         <!--<repeat>-->
                         <tr>
-                            <td>
+                            <td class="familyName">
                                 <obs conceptId="160750AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
                             </td>
-                            <td>
+                            <td class="age">
                                 <obs conceptId="160751AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
                             </td>
-                            <td>
+                            <td class="sex">
                                 <obs conceptId="1533AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
                             </td>
-                            <td>
+                            <td class="hivStatus">
                                 <obs conceptId="1169AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                                      answerConceptIds="703AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,664AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                                      answerLabels="Positive,Negative,Unknown"/>
                             </td>
-                            <td>
+                            <td class="onART">
                                 <obs conceptId="160119AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                                      answerConceptIds="1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1066AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                                      answerLabels="Yes,No"/>
                             </td>
-                            <td>
+                            <td class="action">
                                 <a href="#" class="add">Add</a>
                                 |
                                 <a href="#" class="remove">Remove</a>
