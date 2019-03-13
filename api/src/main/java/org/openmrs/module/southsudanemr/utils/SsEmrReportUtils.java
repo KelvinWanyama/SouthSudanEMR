@@ -2,6 +2,7 @@ package org.openmrs.module.southsudanemr.utils;
 
 import org.openmrs.GlobalProperty;
 import org.openmrs.api.context.Context;
+import org.openmrs.module.reporting.common.DateUtil;
 import org.openmrs.module.reporting.evaluation.parameter.Mapped;
 import org.openmrs.module.reporting.evaluation.parameter.Parameterizable;
 import org.openmrs.module.reporting.evaluation.parameter.ParameterizableUtil;
@@ -9,6 +10,10 @@ import org.openmrs.module.reporting.report.definition.ReportDefinition;
 import org.openmrs.module.reporting.report.definition.service.ReportDefinitionService;
 import org.openmrs.module.reporting.report.manager.ReportManager;
 import org.openmrs.module.reporting.report.manager.ReportManagerUtil;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class SsEmrReportUtils {
 	
@@ -40,7 +45,7 @@ public class SsEmrReportUtils {
 	 * @return Report Definition object
 	 */
 	public static ReportDefinition findReportDefinition(String uuid) {
-		ReportDefinitionService reportService = (ReportDefinitionService) Context.getService(ReportDefinitionService.class);
+		ReportDefinitionService reportService = Context.getService(ReportDefinitionService.class);
 		return reportService.getDefinitionByUuid(uuid);
 	}
 	
@@ -67,5 +72,18 @@ public class SsEmrReportUtils {
 			mappings = ""; // probably not necessary, just to be safe
 		}
 		return new Mapped<T>(parameterizable, ParameterizableUtil.createParameterMappings(mappings));
+	}
+	
+	public static Date getStartOfDay() {
+		return DateUtil.getStartOfDay(new Date());
+	}
+	
+	public static Date getEndOfDay() {
+		return DateUtil.getEndOfDay(new Date());
+	}
+	
+	public static String formatDate(Date date) {
+		DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		return dateFormatter.format(date);
 	}
 }

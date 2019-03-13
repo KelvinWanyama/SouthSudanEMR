@@ -94,6 +94,15 @@ public class SouthsudanemrActivator extends BaseModuleActivator {
 		
 		// save defined global properties
 		administrationService.saveGlobalProperties(configureGlobalProperties());
+		//retire unwanted locations
+		HealthFacilities.retireUnwantedLocations();
+		//load all the required locations
+		try {
+			HealthFacilities.uploadLocations();
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
 		log.info("South Sudan Module started");
 	}
 	
@@ -164,6 +173,8 @@ public class SouthsudanemrActivator extends BaseModuleActivator {
 		properties.add(new GlobalProperty("patient.identifierSearchPattern", ""));
 		// disable the appointmentshedulingui which currently has issues
 		properties.add(new GlobalProperty("appointmentschedulingui.started", "false"));
+		//disable the atlas module since it is NOT used
+		properties.add(new GlobalProperty("atlas.started", "false"));
 		// the name of the custom registration app
 		properties.add(new GlobalProperty("registrationapp.customRegistrationAppId", "southsudanemr.registerPatient"));
 		// enable the register patient button to appear on the search widget

@@ -13,7 +13,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Component
-public class AppointmentDateset extends BaseDataSet {
+public class AppointmentDataset extends BaseDataSet {
 	
 	@Autowired
 	private AppointmentCohortQueries appointmentCohortQueries;
@@ -35,7 +35,15 @@ public class AppointmentDateset extends BaseDataSet {
 		    "Number of clients with appointments today",
 		    SsEmrReportUtils.map(
 		        ssEmrGeneralIndicator.getIndicator("Clients with appointments today",
-		            SsEmrReportUtils.map(appointmentCohortQueries.appointmentsToday(), "")), ""), getGenderList());
+		            SsEmrReportUtils.map(appointmentCohortQueries.getAppointmentsToday(), "")), ""), getGenderList());
+		addRow(
+		    dsd,
+		    "I2",
+		    "Number of patients who visited facility today",
+		    SsEmrReportUtils.map(
+		        ssEmrGeneralIndicator.getIndicator("Patients who visited facility today",
+		            SsEmrReportUtils.map(appointmentCohortQueries.getClientsWhoVistedFacilityToday(), "")), ""),
+		    getGenderList());
 		return dsd;
 	}
 	

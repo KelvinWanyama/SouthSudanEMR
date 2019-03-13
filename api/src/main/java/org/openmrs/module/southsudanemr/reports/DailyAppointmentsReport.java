@@ -4,7 +4,7 @@ import org.openmrs.module.reporting.ReportingException;
 import org.openmrs.module.reporting.evaluation.parameter.Mapped;
 import org.openmrs.module.reporting.report.ReportDesign;
 import org.openmrs.module.reporting.report.definition.ReportDefinition;
-import org.openmrs.module.southsudanemr.reporting.library.dataset.AppointmentDateset;
+import org.openmrs.module.southsudanemr.reporting.library.dataset.AppointmentDataset;
 import org.openmrs.module.southsudanemr.reporting.manager.SsEmrDataExportManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -15,10 +15,10 @@ import java.util.List;
 import java.util.Properties;
 
 @Component
-public class DailyAppointments extends SsEmrDataExportManager {
+public class DailyAppointmentsReport extends SsEmrDataExportManager {
 	
 	@Autowired
-	private AppointmentDateset appointmentDateset;
+	private AppointmentDataset appointmentDateset;
 	
 	@Override
 	public String getExcelDesignUuid() {
