@@ -26,7 +26,7 @@
         }
     </style>
     <script type="text/javascript">
-        jQuery(document).ready(function(){
+        jQuery(document).ready(function(jq){
         jQuery("#entryPointDisabled input").attr('disabled','disabled');
         jQuery("#entryPointDisabled input").css('background-color','#A9A9A9');
 
@@ -54,30 +54,6 @@
         jQuery("#occupationOtherDisabled input").css('background-color','#A9A9A9');
         }
         });
-        });
-
-        jQuery('.add').click(function(e) { //Handle add button event
-        e.preventDefault();
-        $thisRow = jQuery(this).parents('tr:first');
-        $nextRow = $thisRow.next();
-
-        if ($nextRow.length &gt; 0) {
-        $nextRow.show('slow');
-        $thisRow.find('.add').hide();
-        }
-        showAddButtonForLastVisibleRow($thisRow.parents('table:first'));
-        });
-
-        jQuery('.remove').click(function(e) { //Handle remove button event
-        e.preventDefault();
-        $thisRow = jQuery(this).parents('tr:first');
-        if (confirm('Are you sure you want to remove this record? All fields for this record will be cleared.') == 1) {
-        $thisRow = jQuery(this).parents('tr:first');
-        $thisRow.hide('slow', function() {
-        showAddButtonForLastVisibleRow($thisRow.parents('table:first'));
-        fieldHelper.clearAllFields($thisRow);
-        });
-        }
         });
 
     </script>
@@ -200,7 +176,7 @@
                             Marital Status:
                             <obs conceptId="1054AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                                  answerConceptIds="5615AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,5555AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,159715AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1058AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1059AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,1175AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                                 answerLabels="Single,Married Monogamous,Polygamous,Divorced/Separated,Widowed, Not Applicable"/>
+                                 answerLabels="Single,Married Monogamous,Married Polygamous,Divorced/Separated,Widowed,Not Applicable"/>
                         </td>
                     </tr>
                     <tr>
@@ -208,7 +184,7 @@
                             Occupation:
                             <obs conceptId="1542AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                                  answerConceptIds="123801AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,159465AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160295AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,159673AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,159673AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,5622AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                                 answerLabels="Unemployed,Student,Housewife,Military,Other Uninformed Forces,Business,Farmer,Other (specify)"
+                                 answerLabels="Unemployed,Student,Housewife,Military,Other Uniformed Forces,Business,Farmer,Other (specify)"
                                  id="occupation"/> <!--TODO The concept ID (Military and Other Uniformed Forces) is a placeholder and needs to be removed-->
                         </td>
                         <td>Other(Specify field):
@@ -237,8 +213,8 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <repeat>
-                            <template>
+                        <!--<repeat>-->
+                            <!--<template>-->
                                 <tr>
                                     <td class="familyName">
                                         <obs conceptId="160750AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
@@ -265,8 +241,8 @@
                                         <a href="#" class="remove">Remove</a>
                                     </td>
                                 </tr>
-                            </template>
-                        </repeat>
+                            <!--</template>-->
+                        <!--</repeat>-->
                     </tbody>
                 </table>
             </fieldset>
