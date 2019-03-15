@@ -24,6 +24,9 @@
         .hivStatus > select{
         min-width: 60px;
         }
+        legend{
+        font-weight: bold !important;
+        }
     </style>
     <script type="text/javascript">
         jQuery(document).ready(function(jq){
@@ -372,10 +375,10 @@
                     <tbody>
                         <repeat>
                         <template>
-                        <obsgroup groupingConceptId="160593AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA">
+                        <obsgroup groupingConceptId="160593AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"> <!--TODO change the concept ID -->
                         <tr>
                             <td>
-                                <obs conceptId="160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+                                <obs conceptId="160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/> <!--TODO change the concept ID -->
                             </td>
                             <td>
                                 <obs conceptId="159599AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
@@ -406,51 +409,6 @@
                 </table>
             </fieldset>
         </div>
-        <div>
-            <fieldset>
-                <legend>Clinical and Laboratory Milestones</legend>
-                <table>
-                    <tr>
-                        <td>
-                            CTX or Dapsone Start Date:
-                            <obs conceptId="164361AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Date:
-                            <obs conceptId="159599AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            WHO Stage:
-                            <obs conceptId="5356AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Weigth(kgs):
-                            <obs conceptId="5089AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Height(cm), length for child &lt;2 years:
-                            <obs conceptId="5090AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            CD4 Count:
-                            <obs conceptId="5497AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
-                        </td>
-                    </tr>
-                </table>
-            </fieldset>
-        </div>
-
-
         <div>
             <ifMode mode="VIEW" include="false">
                 <div class="buttons-container">

@@ -1,0 +1,126 @@
+<htmlform formName="Clinical Milestone Form"
+          formDescription="Clinical form for collecting HIV related information for South Sudan EMR"
+          formEncounterType="aa1e3904-4718-11e9-91ef-63f7c2d6eed0"
+          formUuid="b356e494-4718-11e9-86f4-4fc42cb78dad"
+          formVersion="1.0"
+          formAddMetadata="yes"
+          formUILocation="patientDashboard.visitActions"
+          formOrder="1"
+          formIcon="icon-medkit"
+          formShowIf=""
+          formDisplayStyle="Standard"
+          formLabel="Milestones at Start of ART">
+    <style type="text/css">
+        legend{
+        font-weight: bold !important;
+        }
+    </style>
+    <script type="text/javascript">
+
+    </script>
+    <div id="main-div">
+        <div class="headers" style="text-align: center;">
+            <h3 style="background:  #00b4ef; padding: 10px; color: #fff;">Milestones at Start of ART</h3>
+        </div>
+        <div>
+            <fieldset>
+                <legend>Clinical and Laboratory Milestones</legend>
+                <div>
+                    CTX or Dapsone Start Date:
+                    <obs conceptId="164361AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+                </div>
+                <table>
+                    <tr>
+                        <td>
+                            WHO Stage:
+                            <obs conceptId="5356AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+                        </td>
+                        <td>
+                            Weigth(kgs):
+                            <obs conceptId="5089AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+                        </td>
+                        <td>
+                            Height(cm), length for child &lt;2 years:
+                            <obs conceptId="5090AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+                        </td>
+                        <td>
+                            If child, oedema?:
+                            <obs conceptId="460AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+                        </td>
+                        <td>
+                            BMI (if over age 5):
+                            <obs conceptId="1342AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+                        </td>
+                        <td>
+                            MUAC (for pregnant women and below age 5):
+                            <obs conceptId="1343AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Pregnant?:
+                            <obs conceptId="5272AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+                        </td>
+                        <td>
+                            EDD (if yes):
+                            <obs conceptId="5596AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            FP?:
+                            <obs conceptId="160653AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+                        </td>
+                        <td>
+                            Methods (if yes):
+                            <obs conceptId="374AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            PMTCT?:
+                            <obs conceptId="163532AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            TB Status:
+                            <obs conceptId="1659AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+                        </td>
+                        <td>
+                            If yes, TB Rx?:
+                            <obs conceptId="161654AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+                        </td>
+                        <td>
+                            If yes, Regimen #:
+                            <obs conceptId="5497AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/> <!--TODO The concept ID to be changed-->
+                        </td>
+                        <td>
+                            Side effects:
+                            <obs conceptId="159935AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+                        </td><td>
+                            New OI, Other Prob:
+                            <obs conceptId="5497AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/> <!--TODO The concept ID to be changed-->
+                        </td>
+                    </tr>
+                </table>
+                Notes:
+                <div>
+                    <obs conceptId="5497AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" />
+                </div>
+            </fieldset>
+        </div>
+        <div>
+            <ifMode mode="VIEW" include="false">
+                <div class="buttons-container">
+                    <div id="buttons">
+                        <submit submitClass="confirm right" submitCode="general.save"/>
+                        <button type="button" class="cancel">
+                            <uimessage code="general.cancel"/>
+                        </button>
+                    </div>
+                </div>
+            </ifMode>
+        </div>
+    </div>
+</htmlform>

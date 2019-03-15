@@ -57,4 +57,22 @@ public class EncounterTypes {
 			return "99bc1bf6-3a81-11e9-818d-ebe91c104547";
 		}
 	};
+	
+	public static EncounterTypeDescriptor VITALS_ENCOUNTER_TYPE = new EncounterTypeDescriptor() {
+		
+		@Override
+		public String name() {
+			return "Milestones at Start of ART";
+		}
+		
+		@Override
+		public String description() {
+			return "Used for exiting a patient from the  ART care";
+		}
+		
+		@Override
+		public String uuid() {
+			return "aa1e3904-4718-11e9-91ef-63f7c2d6eed0";
+		}
+	};
 }
