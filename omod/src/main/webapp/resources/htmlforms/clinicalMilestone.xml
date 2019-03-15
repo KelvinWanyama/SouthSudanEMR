@@ -14,6 +14,18 @@
         legend{
         font-weight: bold !important;
         }
+        .dapsoneDate > input{
+        min-width:100px;
+        }
+        .sex > select{
+        min-width: 60px;
+        }
+        .onART > select{
+        min-width: 60px;
+        }
+        .hivStatus > select{
+        min-width: 60px;
+        }
     </style>
     <script type="text/javascript">
 
@@ -25,11 +37,13 @@
         <div>
             <fieldset>
                 <legend>Clinical and Laboratory Milestones</legend>
-                <div>
-                    CTX or Dapsone Start Date:
-                    <obs conceptId="164361AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
-                </div>
                 <table>
+                    <tr>
+                        <td>
+                            CTX or Dapsone Start Date:
+                            <obs conceptId="164361AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+                        </td>
+                    </tr>
                     <tr>
                         <td>
                             WHO Stage:
@@ -69,7 +83,9 @@
                     <tr>
                         <td>
                             FP?:
-                            <obs conceptId="160653AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+                            <obs conceptId="160653AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                 answerConceptIds="965AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160652AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                 answerLabels="Currently on FP,Not on FP" />
                         </td>
                         <td>
                             Methods (if yes):
@@ -85,7 +101,9 @@
                     <tr>
                         <td>
                             TB Status:
-                            <obs conceptId="1659AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+                            <obs conceptId="1659AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                 answerConceptIds="1660AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,142177AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                                 answerLabels="No signs,Pr TB" />
                         </td>
                         <td>
                             If yes, TB Rx?:
