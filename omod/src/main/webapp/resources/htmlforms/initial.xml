@@ -360,7 +360,7 @@
         <div>
             <fieldset>
                 <legend>Drugs and Duration</legend>
-                <table>
+                <table class="multi" id="drugs">
                     <thead>
                         <tr>
                             <th>Drug Name</th>
@@ -370,6 +370,9 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <repeat>
+                        <template>
+                        <obsgroup groupingConceptId="160593AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA">
                         <tr>
                             <td>
                                 <obs conceptId="160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
@@ -380,10 +383,25 @@
                             <td>
                                 <obs conceptId="160739AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
                             </td>
-                            <td>
-                                <a href="#"></a>
+                            <td class="action">
+                                <a href="#" class="add">Add</a>
+                                |
+                                <a href="#" class="remove">Remove</a>
                             </td>
                         </tr>
+                        </obsgroup>
+                        </template>
+                            <render id="1"/>
+                            <render id="2"/>
+                            <render id="3"/>
+                            <render id="4"/>
+                            <render id="5"/>
+                            <render id="6"/>
+                            <render id="7"/>
+                            <render id="8"/>
+                            <render id="9"/>
+                            <render id="10"/>
+                        </repeat>
                     </tbody>
                 </table>
             </fieldset>
