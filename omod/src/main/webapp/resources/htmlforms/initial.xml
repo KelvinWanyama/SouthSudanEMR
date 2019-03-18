@@ -127,7 +127,8 @@
         }
         });
         });
-        });
+
+
     </script>
     <div id="main-div">
         <div class="headers" style="text-align: center;">
@@ -139,7 +140,7 @@
                 <table>
                     <tr>
                         <td>Health Facility Name:
-                            <encounterLocation default="SessionAttribute:emrContext.sessionLocationId"/>
+                            <encounterLocation default="SessionAttribute:emrContext.sessionLocationId" />
                         </td>
                         <td>Name of individual registering patient:
                             <encounterProvider default="currentUser"/>
@@ -158,10 +159,13 @@
                     <tr>
                         <td>
                             Date first tested HIV+ :
-                            <obs conceptId="164400AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+                            <obs conceptId="164400AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" />
                         </td>
-                        <td colspan="2">Place:
-                            <obs conceptId="161549AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+                        <td>Place:
+                            <obs conceptId="161549AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" />
+                        </td>
+                        <td>Next Appointment Date:
+                            <obs conceptId="5096AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" allowFutureDates="true" />
                         </td>
                     </tr>
                     <tr>
@@ -408,49 +412,6 @@
                             <render id="10"/>
                         </repeat>
                     </tbody>
-                </table>
-            </fieldset>
-        </div>
-        <div>
-            <fieldset>
-                <legend>Clinical and Laboratory Milestones</legend>
-                <table>
-                    <tr>
-                        <td>
-                            CTX or Dapsone Start Date:
-                            <obs conceptId="164361AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Date:
-                            <obs conceptId="159599AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            WHO Stage:
-                            <obs conceptId="5356AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Weigth(kgs):
-                            <obs conceptId="5089AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Height(cm), length for child &lt;2 years:
-                            <obs conceptId="5090AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            CD4 Count:
-                            <obs conceptId="5497AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
-                        </td>
-                    </tr>
                 </table>
             </fieldset>
         </div>

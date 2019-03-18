@@ -16,8 +16,10 @@ import java.util.Properties;
 
 @Component
 public class AppointmentListToday extends SsEmrDataExportManager {
+	
 	@Autowired
 	private AppointmentListTodayDataset appointmentListTodayDataset;
+	
 	@Override
 	public String getExcelDesignUuid() {
 		return "cd8d6894-4568-11e9-a1df-5b05e1c3d58a";
@@ -46,7 +48,8 @@ public class AppointmentListToday extends SsEmrDataExportManager {
 		rd.setDescription(getDescription());
 		rd.setParameters(getParameters());
 		
-		rd.addDataSetDefinition("L1", Mapped.mapStraightThrough(appointmentListTodayDataset.constructAppointmentListTodayDataset()));
+		rd.addDataSetDefinition("L1",
+		    Mapped.mapStraightThrough(appointmentListTodayDataset.constructAppointmentListTodayDataset()));
 		
 		return rd;
 	}

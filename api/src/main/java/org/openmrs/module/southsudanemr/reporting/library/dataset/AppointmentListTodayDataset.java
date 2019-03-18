@@ -19,27 +19,29 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class AppointmentListTodayDataset extends BaseDataSet {
-
-    @Autowired
-    private AppointmentCohortQueries appointmentCohortQueries;
-
-    public DataSetDefinition constructAppointmentListTodayDataset() {
-
-        PatientDataSetDefinition dsd = new PatientDataSetDefinition();
-        dsd.setName("List Today");
-        dsd.addParameters(getParameters());
-        dsd.addRowFilter(appointmentCohortQueries.getAppointmentsToday(), "");
-
-        PatientIdentifierType aRTNo = MetadataUtils.existing(PatientIdentifierType.class, PatientIdentifierTypes.ART_NUMBER.uuid());
-        DataConverter identifierFormatter = new ObjectFormatter("{identifier}");
-        DataDefinition identifierDef = new ConvertedPatientDataDefinition("identifier", new PatientIdentifierDataDefinition(aRTNo.getName(), aRTNo), identifierFormatter);
-
-        dsd.addColumn("ART Number", identifierDef, "");
-        dsd.addColumn("Name of Client", new PreferredNameDataDefinition(), (String) null);
-        dsd.addColumn("Sex", new GenderDataDefinition(), (String) null);
-        dsd.addColumn("Birth Date", new BirthdateDataDefinition(), (String) null);
-
-        return dsd;
-    }
-
+	
+	@Autowired
+	private AppointmentCohortQueries appointmentCohortQueries;
+	
+	public DataSetDefinition constructAppointmentListTodayDataset() {
+		
+		PatientDataSetDefinition dsd = new PatientDataSetDefinition();
+		dsd.setName("List Today");
+		dsd.addParameters(getParameters());
+		dsd.addRowFilter(appointmentCohortQueries.getAppointmentsToday(), "");
+		
+		PatientIdentifierType aRTNo = MetadataUtils.existing(PatientIdentifierType.class,
+		    PatientIdentifierTypes.ART_NUMBER.uuid());
+		DataConverter identifierFormatter = new ObjectFormatter("{identifier}");
+		DataDefinition identifierDef = new ConvertedPatientDataDefinition("identifier", new PatientIdentifierDataDefinition(
+		        aRTNo.getName(), aRTNo), identifierFormatter);
+		
+		dsd.addColumn("ART Number", identifierDef, "");
+		dsd.addColumn("Name of Client", new PreferredNameDataDefinition(), (String) null);
+		dsd.addColumn("Sex", new GenderDataDefinition(), (String) null);
+		dsd.addColumn("Birth Date", new BirthdateDataDefinition(), (String) null);
+		
+		return dsd;
+	}
+	
 }
