@@ -74,6 +74,24 @@
         <div class="headers" style="text-align: center;">
             <h3 style="background:  #00b4ef; padding: 10px; color: #fff;">Milestones at Start of ART</h3>
         </div>
+        <div style="display:none;">
+            <fieldset>
+                <legend>Encounter Details</legend>
+                <table>
+                    <tr>
+                        <td>Health Facility Name:
+                            <encounterLocation default="SessionAttribute:emrContext.sessionLocationId" />
+                        </td>
+                        <td>Name of individual registering patient:
+                            <encounterProvider default="currentUser"/>
+                        </td>
+                        <td>Date :
+                            <encounterDate default="now" disallowMultipleEncountersOnDate="block"/>
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+        </div>
         <div>
             <fieldset>
                 <legend>Clinical and Laboratory Milestones</legend>
@@ -81,44 +99,44 @@
                     <tr>
                         <td>
                             CTX or Dapsone Start Date:
-                            <obs conceptId="164361AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+                            <obs conceptId="164361AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" />
                         </td>
                         <td colspan="5"></td>
                     </tr>
                     <tr>
                         <td class="whoStage">
                             WHO Stage:
-                            <obs conceptId="5356AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+                            <obs conceptId="5356AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" />
                         </td>
                         <td class="weight">
                             Weight(kgs):
-                            <obs conceptId="5089AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+                            <obs conceptId="5089AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" />
                         </td>
                         <td class="height">
                             Height(cm), length for child &lt;2 years:
-                            <obs conceptId="5090AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+                            <obs conceptId="5090AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" />
                         </td>
                         <td class="oedema">
                             If child, oedema?:
-                            <obs conceptId="460AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+                            <obs conceptId="460AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" />
                         </td>
                         <td>
                             BMI (if over age 5):
-                            <obs conceptId="1342AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+                            <obs conceptId="1342AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" />
                         </td>
                         <td>
                             MUAC (for pregnant women and below age 5):
-                            <obs conceptId="1343AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+                            <obs conceptId="1343AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" />
                         </td>
                     </tr>
                     <tr>
                         <td class="pregnant">
                             Pregnant?:
-                            <obs conceptId="5272AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+                            <obs conceptId="5272AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" />
                         </td>
                         <td>
                             EDD (if yes):
-                            <obs conceptId="5596AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+                            <obs conceptId="5596AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" allowFutureDates="true" />
                         </td>
                         <td colspan="4"></td>
                     </tr>
@@ -131,14 +149,14 @@
                         </td>
                         <td class="fpMethods">
                             Methods (if yes):
-                            <obs conceptId="374AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+                            <obs conceptId="374AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" />
                         </td>
                         <td colspan="4"></td>
                     </tr>
                     <tr>
                         <td class="pmtct">
                             PMTCT?:
-                            <obs conceptId="163532AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+                            <obs conceptId="163532AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" />
                         </td>
                         <td colspan="5"></td>
                     </tr>
@@ -151,19 +169,19 @@
                         </td>
                         <td>
                             If yes, TB Rx?:
-                            <obs conceptId="161654AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+                            <obs conceptId="161654AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" />
                         </td>
                         <td>
                             If yes, Regimen #:
-                            <obs conceptId="5497AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/> <!--TODO The concept ID to be changed-->
+                            <obs conceptId="5497AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" /> <!--TODO The concept ID to be changed-->
                         </td>
                         <td class="sideEffects">
                             Side effects:
-                            <obs conceptId="159935AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+                            <obs conceptId="159935AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" />
                         </td>
                         <td colspan="2">
                             New OI, Other Prob:
-                            <obs conceptId="5497AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/> <!--TODO The concept ID to be changed-->
+                            <obs conceptId="5497AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" /> <!--TODO The concept ID to be changed-->
                         </td>
                     </tr>
                 </table>
