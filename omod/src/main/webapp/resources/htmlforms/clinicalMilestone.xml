@@ -17,15 +17,55 @@
         .dapsoneDate > input{
         min-width:100px;
         }
-        .sex > select{
-        min-width: 60px;
+        .whoStage > select{
+        width: 100px;
+        overflow: hidden;
+        white-space: pre;
+        text-overflow: ellipsis;
         }
-        .onART > select{
-        min-width: 60px;
+        .oedema > select{
+        min-width: 100px !important;
+        overflow: hidden;
+        white-space: pre;
+        text-overflow: ellipsis;
         }
-        .hivStatus > select{
-        min-width: 60px;
+        .pregnant > select{
+        width: 100px;
+        overflow: hidden;
+        white-space: pre;
+        text-overflow: ellipsis;
         }
+        .fp >select{
+        width: 100px;
+        overflow: hidden;
+        white-space: pre;
+        text-overflow: ellipsis;
+        }
+        .fpMethods >select{
+        width: 100px;
+        overflow: hidden;
+        white-space: pre;
+        text-overflow: ellipsis;
+        }
+        .pmtct >select{
+        width: 100px;
+        overflow: hidden;
+        white-space: pre;
+        text-overflow: ellipsis;
+        }
+        .tbStatus >select{
+        width: 100px;
+        overflow: hidden;
+        white-space: pre;
+        text-overflow: ellipsis;
+        }
+        .sideEffects >select{
+        min-width: 100px;
+        overflow: hidden;
+        white-space: pre;
+        text-overflow: ellipsis;
+        }
+
     </style>
     <script type="text/javascript">
 
@@ -43,21 +83,22 @@
                             CTX or Dapsone Start Date:
                             <obs conceptId="164361AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
                         </td>
+                        <td colspan="5"></td>
                     </tr>
                     <tr>
-                        <td>
+                        <td class="whoStage">
                             WHO Stage:
                             <obs conceptId="5356AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
                         </td>
-                        <td>
-                            Weigth(kgs):
+                        <td class="weight">
+                            Weight(kgs):
                             <obs conceptId="5089AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
                         </td>
-                        <td>
+                        <td class="height">
                             Height(cm), length for child &lt;2 years:
                             <obs conceptId="5090AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
                         </td>
-                        <td>
+                        <td class="oedema">
                             If child, oedema?:
                             <obs conceptId="460AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
                         </td>
@@ -71,7 +112,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <td class="pregnant">
                             Pregnant?:
                             <obs conceptId="5272AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
                         </td>
@@ -79,27 +120,30 @@
                             EDD (if yes):
                             <obs conceptId="5596AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
                         </td>
+                        <td colspan="4"></td>
                     </tr>
                     <tr>
-                        <td>
+                        <td class="fp">
                             FP?:
                             <obs conceptId="160653AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                                  answerConceptIds="965AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,160652AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                                  answerLabels="Currently on FP,Not on FP" />
                         </td>
-                        <td>
+                        <td class="fpMethods">
                             Methods (if yes):
                             <obs conceptId="374AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
                         </td>
+                        <td colspan="4"></td>
                     </tr>
                     <tr>
-                        <td>
+                        <td class="pmtct">
                             PMTCT?:
                             <obs conceptId="163532AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
                         </td>
+                        <td colspan="5"></td>
                     </tr>
                     <tr>
-                        <td>
+                        <td class="tbStatus">
                             TB Status:
                             <obs conceptId="1659AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                                  answerConceptIds="1660AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,142177AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
@@ -113,10 +157,11 @@
                             If yes, Regimen #:
                             <obs conceptId="5497AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/> <!--TODO The concept ID to be changed-->
                         </td>
-                        <td>
+                        <td class="sideEffects">
                             Side effects:
                             <obs conceptId="159935AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
-                        </td><td>
+                        </td>
+                        <td colspan="2">
                             New OI, Other Prob:
                             <obs conceptId="5497AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/> <!--TODO The concept ID to be changed-->
                         </td>

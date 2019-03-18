@@ -1,0 +1,63 @@
+<htmlform formName="End of Followup"
+          formDescription="ART Treatment Interruption form for ssemr"
+          formEncounterType="13700a3e-4973-11e9-bfc5-635c3b8b4cb1"
+          formUuid="1adafc34-4973-11e9-837a-37b7fca6179d"
+          formVersion="1.0"
+          formAddMetadata="yes"
+          formUILocation="patientDashboard.visitActions"
+          formOrder="2"
+          formIcon="icon-medkit"
+          formShowIf=""
+          formDisplayStyle="Standard"
+          formLabel="End of Followup Card">
+
+    <style type="text/css">
+
+    </style>
+    <script type="text/javascript">
+
+    </script>
+    <ifMode mode="ENTER">
+        <includeIf velocityTest="$fn.allEncounters('22cc4ade-39dc-11e9-bd8d-23b7f6ce3c7f').size() == 0">
+            <script>
+                jq(function () {
+                alert('This Patient has no initial form filled , you will now be forwarded to the patient dashboard to fill initial form first');
+
+                var queryParameters = {}, queryString = location.search.substring(1),
+                re = /([^&amp;=]+)=([^&amp;]*)/g, m;
+
+                // Creates a map with the query string parameters
+                while (m = re.exec(queryString)) {
+                queryParameters[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
+                }
+                location.href = window.location.protocol + "//" + window.location.host +
+                '/' + OPENMRS_CONTEXT_PATH + '/coreapps/clinicianfacing/patient.page?patientId='
+                + queryParameters['patientId'];
+                });
+            </script>
+        </includeIf>
+    </ifMode>
+
+
+    <div class="headers" style="text-align: center;">
+        <h3 style="background:  #00b4ef; padding: 10px; color: #fff;">End of Followup Card</h3>
+    </div>
+    <div>
+        Location:<encounterLocation default="SessionAttribute:emrContext.sessionLocationId"/>
+        Provider:<encounterProvider default="currentUser" />
+        Encounter Date:<encounterDate default="now" disallowMultipleEncountersOnDate="block"/>
+    </div>
+
+    <div>
+        <ifMode mode="VIEW" include="false">
+            <div class="buttons-container">
+                <div id="buttons">
+                    <submit submitClass="confirm right" submitCode="general.save"/>
+                    <button type="button" class="cancel">
+                        <uimessage code="general.cancel"/>
+                    </button>
+                </div>
+            </div>
+        </ifMode>
+    </div>
+</htmlform>

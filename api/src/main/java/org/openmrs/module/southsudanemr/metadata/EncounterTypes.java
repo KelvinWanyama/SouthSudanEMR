@@ -75,4 +75,22 @@ public class EncounterTypes {
 			return "aa1e3904-4718-11e9-91ef-63f7c2d6eed0";
 		}
 	};
+	
+	public static EncounterTypeDescriptor TREATMENT_INTERRUPTION_ENCOUNTER_TYPE = new EncounterTypeDescriptor() {
+		
+		@Override
+		public String name() {
+			return "ART Treatment Interruption Type";
+		}
+		
+		@Override
+		public String description() {
+			return "Used for ART Treatment Interruption form";
+		}
+		
+		@Override
+		public String uuid() {
+			return "e128dbb6-4961-11e9-b5bc-b381a71e44de";
+		}
+	};
 }

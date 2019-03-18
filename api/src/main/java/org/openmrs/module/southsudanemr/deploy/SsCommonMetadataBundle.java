@@ -33,6 +33,7 @@ public class SsCommonMetadataBundle extends AbstractMetadataBundle {
 		install(EncounterTypes.ART_FOLLOW_UP_ENCOUNTER_TYPE);
 		install(EncounterTypes.ART_DISCONTINUES_ENCOUNTER_TYPE);
 		install(EncounterTypes.VITALS_ENCOUNTER_TYPE);
+		install(EncounterTypes.TREATMENT_INTERRUPTION_ENCOUNTER_TYPE);
 		
 		//install programs
 		install(ProgramTypes.MH_PROGRAM);
