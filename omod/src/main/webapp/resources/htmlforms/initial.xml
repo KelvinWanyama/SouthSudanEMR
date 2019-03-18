@@ -58,7 +58,8 @@
         }
         });
 
-        var $allTables, $allRows, $otherRows, $firstRow, $thisRow, $nextRow, $hiddenRows, $lastVisibleRow, $nonEmptyBoxes;
+        var $allTables, $allRows, $otherRows, $firstRow, $thisRow, $nextRow, $hiddenRows, $lastVisibleRow,
+        $nonEmptyBoxes;
         var showAddButtonForLastVisibleRow = function($container) {
         $lastVisibleRow = $container.find('tr:visible:last');
         $lastVisibleRow.find('.add').show();
@@ -91,7 +92,8 @@
             });
 
             if ($nonEmptyBoxes.length == 1) {
-            $nonEmptyBoxes.parents('tr:first').find('.remove').hide(); //Hide the remove button if there is only one visible row
+            $nonEmptyBoxes.parents('tr:first').find('.remove').hide(); //Hide the remove button if there is only one
+            visible row
             }
             } else {
             $firstRow.show();
@@ -125,8 +127,7 @@
         }
         });
         });
-
-
+        });
     </script>
     <div id="main-div">
         <div class="headers" style="text-align: center;">
@@ -374,26 +375,27 @@
                     </thead>
                     <tbody>
                         <repeat>
-                        <template>
-                        <obsgroup groupingConceptId="160593AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"> <!--TODO change the concept ID -->
-                        <tr>
-                            <td>
-                                <obs conceptId="160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/> <!--TODO change the concept ID -->
-                            </td>
-                            <td>
-                                <obs conceptId="159599AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
-                            </td>
-                            <td>
-                                <obs conceptId="160739AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
-                            </td>
-                            <td class="action">
-                                <a href="#" class="add">Add</a>
-                                |
-                                <a href="#" class="remove">Remove</a>
-                            </td>
-                        </tr>
-                        </obsgroup>
-                        </template>
+                            <template>
+                                <obsgroup
+                                        groupingConceptId="160593AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"> <!--TODO change the concept ID -->
+                                    <tr>
+                                        <td>
+                                            <obs conceptId="160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/> <!--TODO change the concept ID -->
+                                        </td>
+                                        <td>
+                                            <obs conceptId="159599AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+                                        </td>
+                                        <td>
+                                            <obs conceptId="160739AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+                                        </td>
+                                        <td class="action">
+                                            <a href="#" class="add">Add</a>
+                                            |
+                                            <a href="#" class="remove">Remove</a>
+                                        </td>
+                                    </tr>
+                                </obsgroup>
+                            </template>
                             <render id="1"/>
                             <render id="2"/>
                             <render id="3"/>
@@ -406,6 +408,49 @@
                             <render id="10"/>
                         </repeat>
                     </tbody>
+                </table>
+            </fieldset>
+        </div>
+        <div>
+            <fieldset>
+                <legend>Clinical and Laboratory Milestones</legend>
+                <table>
+                    <tr>
+                        <td>
+                            CTX or Dapsone Start Date:
+                            <obs conceptId="164361AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Date:
+                            <obs conceptId="159599AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            WHO Stage:
+                            <obs conceptId="5356AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Weigth(kgs):
+                            <obs conceptId="5089AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Height(cm), length for child &lt;2 years:
+                            <obs conceptId="5090AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            CD4 Count:
+                            <obs conceptId="5497AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+                        </td>
+                    </tr>
                 </table>
             </fieldset>
         </div>

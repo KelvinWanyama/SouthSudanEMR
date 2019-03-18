@@ -38,6 +38,14 @@
         "label": "Appointments Today",
         "url": "reportingui/runReport.page?reportDefinition=eaceb9a2-3c0e-11e9-ba7f-d3c5189e6a0b",
         "order": 5
+      },
+      {
+        "id": "list.appointment.today",
+        "extensionPointId": "org.openmrs.module.southsudanemr.reports.registers",
+        "type": "link",
+        "label": "Today's appointment list",
+        "url": "reportingui/runReport.page?reportDefinition=40b77ae6-4567-11e9-be0b-ff70e1e13160",
+        "order": 6
       }
       ]
   }

@@ -13,7 +13,7 @@
         {icon: "icon-home", link: '/' + OPENMRS_CONTEXT_PATH + '/index.htm'},
         {
             label: "${ ui.message("reportingui.reportsapp.home.title") }", link: "${ ui.pageLink("southsudanemr",
-        "reportsHome")
+        "reports")
 }"
         }
     ];
@@ -28,7 +28,7 @@
     <div class="info-container column">
         <% if (daily) { %>
         <div class="info-section">
-            <div class="info-header"><h3>Facility Reports</h3></div>
+            <div class="info-header"><h3>Facility Reports - Summaries</h3></div>
 
             <div class="info-body">
                 <ul>
@@ -44,7 +44,7 @@
 
         <% if (registers) { %>
         <div class="info-section">
-            <div class="info-header"><h3>Registers</h3></div>
+            <div class="info-header"><h3>Facility Reports - Patient List</h3></div>
 
             <div class="info-body">
                 <ul>

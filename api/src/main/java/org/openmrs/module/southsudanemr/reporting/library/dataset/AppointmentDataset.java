@@ -44,6 +44,20 @@ public class AppointmentDataset extends BaseDataSet {
 		        ssEmrGeneralIndicator.getIndicator("Patients who visited facility today",
 		            SsEmrReportUtils.map(appointmentCohortQueries.getClientsWhoVistedFacilityToday(), "")), ""),
 		    getGenderList());
+		
+		addRow(
+		    dsd,
+		    "I3",
+		    "Number of patients who missed appointment",
+		    SsEmrReportUtils.map(
+		        ssEmrGeneralIndicator.getIndicator("Patients who missed",
+		            SsEmrReportUtils.map(appointmentCohortQueries.getClientsWhoMissedAppointment(), "")), ""),
+		    getGenderList());
+		
+		addRow(dsd, "I4", "Number of patients who visited facility today without appointments", SsEmrReportUtils.map(
+		    ssEmrGeneralIndicator.getIndicator("Patients who visited facility today without appointments", SsEmrReportUtils
+		            .map(appointmentCohortQueries.getNumberOfClientsWhoVisitedFacilityTodayWithoutAppointment(), "")), ""),
+		    getGenderList());
 		return dsd;
 	}
 	
