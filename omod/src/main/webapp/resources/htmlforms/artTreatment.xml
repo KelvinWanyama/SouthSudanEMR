@@ -12,16 +12,103 @@
           formLabel="ART Treatment Card">
 
     <style type="text/css">
-
+        legend{
+        font-weight: bold !important;
+        }
+        .adhere > select{
+        max-width: 100px !important;
+        min-width: 100px !important;
+        overflow: hidden;
+        white-space: pre;
+        text-overflow: ellipsis;
+        }
+        .drug > input {
+        max-width: 50px !important;
+        }
+        .regimen > input {
+        max-width: 50px !important;
+        }
     </style>
     <script type="text/javascript">
+        jQuery(document).ready(function(jq){
+        var $allTables, $allRows, $otherRows, $firstRow, $thisRow, $nextRow, $hiddenRows, $lastVisibleRow,
+        $nonEmptyBoxes;
+        var showAddButtonForLastVisibleRow = function($container) {
+        $lastVisibleRow = $container.find('tr:visible:last');
+        $lastVisibleRow.find('.add').show();
+        };
+
+        $firstRow = jq('table.multi tbody tr:first-of-type');
+        $otherRows = jq('table.multi tbody tr:not(:first-of-type)');
+        <ifMode mode="ENTER">
+            $otherRows.hide(); //Hide all rows apart from first row if adding new form
+            $firstRow.find('.remove').hide(); //Hide the remove button from the first row
+        </ifMode>
+
+        <ifMode mode="EDIT">
+            //Handle loading of existing obs
+            $allTables = jq('table.multi');
+            $allTables.each(function() {
+            $allRows = jq(this).find('tbody &gt; tr');
+            $allRows.hide();
+            $nonEmptyBoxes = jq(this).find('input').filter(function() {
+            return this.value.length &gt; 0;
+            });
+
+            if ($nonEmptyBoxes.length &gt; 0 ) {
+            $nonEmptyBoxes.each(function() {
+            $thisRow = jq(this).parents('tr:first');
+            $thisRow.show();
+            if ($thisRow.is($firstRow)) {
+            $firstRow.find('.remove').hide();
+            }
+            });
+
+            if ($nonEmptyBoxes.length == 1) {
+            $nonEmptyBoxes.parents('tr:first').find('.remove').hide(); //Hide the remove button if there is only one
+            visible row
+            }
+            } else {
+            $firstRow.show();
+            $firstRow.find('.remove').hide();
+            }
+            });
+        </ifMode>
+
+
+        jq('.add').click(function(e) { //Handle add button event
+        e.preventDefault();
+        $thisRow = jq(this).parents('tr:first');
+        $nextRow = $thisRow.next();
+
+        if ($nextRow.length &gt; 0) {
+        $nextRow.show('slow');
+        $thisRow.find('.add').hide();
+        }
+        showAddButtonForLastVisibleRow($thisRow.parents('table:first'));
+        });
+
+        jq('.remove').click(function(e) { //Handle remove button event
+        e.preventDefault();
+        $thisRow = jq(this).parents('tr:first');
+        if (confirm('Are you sure you want to remove this record? All fields for this record will be cleared.') == 1) {
+        $thisRow = jq(this).parents('tr:first');
+        $thisRow.hide('slow', function() {
+        showAddButtonForLastVisibleRow($thisRow.parents('table:first'));
+        fieldHelper.clearAllFields($thisRow);
+        });
+        }
+        });
+        });
+
 
     </script>
     <ifMode mode="ENTER">
         <includeIf velocityTest="$fn.allEncounters('22cc4ade-39dc-11e9-bd8d-23b7f6ce3c7f').size() == 0">
             <script>
                 jq(function () {
-                alert('This Patient has no initial form filled , you will now be forwarded to the patient dashboard to fill initial form first');
+                alert('This Patient has no initial form filled , you will now be forwarded to the patient dashboard to
+                fill initial form first');
 
                 var queryParameters = {}, queryString = location.search.substring(1),
                 re = /([^&amp;=]+)=([^&amp;]*)/g, m;
@@ -42,10 +129,320 @@
     <div class="headers" style="text-align: center;">
         <h3 style="background:  #00b4ef; padding: 10px; color: #fff;">ART Treatment Card</h3>
     </div>
+    <div style="display:none;">
+        <fieldset>
+            <legend>Encounter Details</legend>
+            <table>
+                <tr>
+                    <td>Health Facility Name:
+                        <encounterLocation default="SessionAttribute:emrContext.sessionLocationId"/>
+                    </td>
+                    <td>Name of individual registering patient:
+                        <encounterProvider default="currentUser"/>
+                    </td>
+                    <td>Date :
+                        <encounterDate default="now" disallowMultipleEncountersOnDate="block"/>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+    </div>
+    <!--<div>-->
+    <!--Location:<encounterLocation default="SessionAttribute:emrContext.sessionLocationId"/>-->
+    <!--Provider:<encounterProvider default="currentUser" />-->
+    <!--Encounter Date:<encounterDate default="now" disallowMultipleEncountersOnDate="block"/>-->
+    <!--</div>-->
     <div>
-        Location:<encounterLocation default="SessionAttribute:emrContext.sessionLocationId"/>
-        Provider:<encounterProvider default="currentUser" />
-        Encounter Date:<encounterDate default="now" disallowMultipleEncountersOnDate="block"/>
+        <fieldset>
+            <legend>ART Regiment</legend>
+            <table>
+                <tr>
+                    <td colspan="3"  style="width:50%;">
+                        ART Readiness Confirmed By:
+                        <obs conceptId="1473AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+                    </td>
+                    <td colspan="3"  style="width:50%;">
+                        Date:
+                        <obs conceptId="159599AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2"  style="width:33%;">
+                        Initial Regimen:
+                        <obs conceptId="164855AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+                    </td>
+                    <td colspan="2" style="width:33%;">
+                        Cohort:
+                        <obs conceptId="160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/><!--TODO The concept ID is a placeholder and needs to be removed-->
+                    </td>
+                    <td colspan="2">
+                        Duration since starting ART(Months):
+                        <obs conceptId="160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/><!--TODO The concept ID is a placeholder and needs to be removed-->
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+    </div>
+    <div>
+        <fieldset>
+            <legend>Substitution Within 1st Line</legend>
+            <table class="multi">
+                <thead>
+                    <tr>
+                        <th colspan="2">Date</th>
+                        <th colspan="2">Substitution Regimen</th>
+                        <th>Reason(Code)</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <repeat>
+                        <template>
+                            <obsgroup groupingConceptId="162241AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA">
+                                <tr>
+                                    <td colspan="2">
+                                        <obs conceptId="159599AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+                                    </td>
+                                    <td colspan="2" >
+                                        <obs conceptId="160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/><!--TODO The concept ID is a placeholder and needs to be removed-->
+                                    </td>
+                                    <td>
+                                        <obs conceptId="160562AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+                                    </td>
+                                    <td class="action" style="width: 20.5%;">
+                                        <a href="#" class="add"><i class="fa fa-plus" aria-hidden="true"></i></a>
+                                        |
+                                        <a href="#" class="remove"><i class="fa fa-trash"></i></a>
+                                    </td>
+                                </tr>
+                            </obsgroup>
+                        </template>
+                        <render id="1"/>
+                        <render id="2"/>
+                        <render id="3"/>
+                        <render id="4"/>
+                        <render id="5"/>
+                    </repeat>
+                </tbody>
+            </table>
+        </fieldset>
+    </div>
+    <div>
+        <fieldset>
+            <legend>Substitution Within 2nd Line</legend>
+            <table class="multi">
+                <thead>
+                    <tr>
+                        <th colspan="2">Date</th>
+                        <th colspan="2">Substitution Regimen</th>
+                        <th>Reason(Code)</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <repeat>
+                        <template>
+                            <obsgroup groupingConceptId="162242AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA">
+                                <tr>
+                                    <td colspan="2" style="width: 28.4%;">
+                                        <obs conceptId="164516AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+                                    </td>
+                                    <td colspan="2">
+                                        <obs conceptId="160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/><!--TODO The concept ID is a placeholder and needs to be removed-->
+                                    </td>
+                                    <td>
+                                        <obs conceptId="160568AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+                                    </td>
+                                    <td class="action" style="width: 20%;">
+                                        <a href="#" class="add"><i class="fa fa-plus" aria-hidden="true"></i></a>
+                                        |
+                                        <a href="#" class="remove"><i class="fa fa-trash"></i></a>
+                                    </td>
+                                </tr>
+                            </obsgroup>
+                        </template>
+                        <render id="1"/>
+                        <render id="2"/>
+                        <render id="3"/>
+                        <render id="4"/>
+                        <render id="5"/>
+                    </repeat>
+                </tbody>
+            </table>
+        </fieldset>
+    </div>
+    <div>
+        <fieldset>
+            <legend>Other Treatments</legend>
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Drug</th>
+                        <th>Adhere/Why</th>
+                        <th>Regimen</th>
+                        <th>Dose</th>
+                        <th>No. Days Dispensed</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Antibiotic</td>
+                        <td class="drug">
+                            <obs conceptId="160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/><!--TODO The concept ID is a placeholder and needs to be removed-->
+                        </td>
+                        <td class="adhere">
+                            <obs conceptId="160582AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+                        </td>
+                        <td class="regimen">
+                            <obs conceptId="160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/><!--TODO The concept ID is a placeholder and needs to be removed-->
+                        </td>
+                        <td class="adhere">
+                            <obs conceptId="1181AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+                        </td>
+                        <td>
+                            <obs conceptId="159368AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <br></br>
+            <br></br>
+            <table class="multi">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Drug</th>
+                        <th>Adhere/Why</th>
+                        <th>Regimen</th>
+                        <th>Dose</th>
+                        <th>No. Days Dispensed</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>TB</td>
+                        <td class="drug">
+                            <obs conceptId="160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/><!--TODO The concept ID is a placeholder and needs to be removed-->
+                        </td>
+                        <td class="adhere">
+                            <obs conceptId="160582AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+                        </td>
+                        <td class="regimen">
+                            <obs conceptId="160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/><!--TODO The concept ID is a placeholder and needs to be removed-->
+                        </td>
+                        <td class="adhere">
+                            <obs conceptId="1181AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+                        </td>
+                        <td>
+                            <obs conceptId="159368AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <br></br>
+            <br></br>
+            <table class="multi">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Drug</th>
+                        <th>Adhere/Why</th>
+                        <th>Regimen</th>
+                        <th>Dose</th>
+                        <th>No. Days Dispensed</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <repeat>
+                        <template>
+                            <obsgroup groupingConceptId="162242AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA">
+                                <tr>
+                                    <td>Nutritional Supplements</td>
+                                    <td class="drug">
+                                        <obs conceptId="160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" /><!--TODO The concept ID is a placeholder and needs to be removed-->
+                                    </td>
+                                    <td class="adhere">
+                                        <obs conceptId="160582AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" />
+                                    </td>
+                                    <td class="regimen">
+                                        <obs conceptId="160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" /><!--TODO The concept ID is a placeholder and needs to be removed-->
+                                    </td>
+                                    <td class="adhere">
+                                        <obs conceptId="1181AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" />
+                                    </td>
+                                    <td>
+                                        <obs conceptId="159368AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" />
+                                    </td>
+                                    <td class="action">
+                                        <a href="#" class="add"><i class="fa fa-plus" aria-hidden="true"></i></a>
+                                        |
+                                        <a href="#" class="remove"><i class="fa fa-trash"></i></a>
+                                    </td>
+                                </tr>
+                            </obsgroup>
+                        </template>
+                        <render id="1"/>
+                        <render id="2"/>
+                        <render id="3"/>
+                        <render id="4"/>
+                        <render id="5"/>
+                    </repeat>
+                </tbody>
+            </table>
+            <br></br>
+            <br></br>
+            <table class="multi">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Drug</th>
+                        <th>Adhere/Why</th>
+                        <th>Regimen</th>
+                        <th>Dose</th>
+                        <th>No. Days Dispensed</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <repeat>
+                        <template>
+                            <obsgroup groupingConceptId="162242AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA">
+                                <tr>
+                                    <td>Other</td>
+                                    <td class="drug">
+                                        <obs conceptId="160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" /><!--TODO The concept ID is a placeholder and needs to be removed-->
+                                    </td>
+                                    <td class="adhere">
+                                        <obs conceptId="160582AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" />
+                                    </td>
+                                    <td class="regimen">
+                                        <obs conceptId="160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" /><!--TODO The concept ID is a placeholder and needs to be removed-->
+                                    </td>
+                                    <td class="adhere">
+                                        <obs conceptId="1181AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" />
+                                    </td>
+                                    <td>
+                                        <obs conceptId="159368AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" />
+                                    </td>
+                                    <td class="action">
+                                        <a href="#" class="add"><i class="fa fa-plus" aria-hidden="true"></i></a>
+                                        |
+                                        <a href="#" class="remove"><i class="fa fa-trash"></i></a>
+                                    </td>
+                                </tr>
+                            </obsgroup>
+                        </template>
+                        <render id="1"/>
+                        <render id="2"/>
+                        <render id="3"/>
+                        <render id="4"/>
+                        <render id="5"/>
+                    </repeat>
+                </tbody>
+            </table>
+        </fieldset>
     </div>
 
     <div>

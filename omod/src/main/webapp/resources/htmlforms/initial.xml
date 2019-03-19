@@ -313,9 +313,9 @@
                                                  answerLabels="Yes,No"/>
                                         </td>
                                         <td class="action">
-                                            <a href="#" class="add">Add</a>
+                                            <a href="#" class="add"><i class="fa fa-plus" aria-hidden="true"></i></a>
                                             |
-                                            <a href="#" class="remove">Remove</a>
+                                            <a href="#" class="remove"><i class="fa fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 </obsgroup>
@@ -393,9 +393,9 @@
                                             <obs conceptId="160739AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
                                         </td>
                                         <td class="action">
-                                            <a href="#" class="add">Add</a>
+                                            <a href="#" class="add"><i class="fa fa-plus" aria-hidden="true"></i></a>
                                             |
-                                            <a href="#" class="remove">Remove</a>
+                                            <a href="#" class="remove"><i class="fa fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 </obsgroup>
