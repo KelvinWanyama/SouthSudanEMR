@@ -12,7 +12,9 @@
           formLabel="End of Followup Card">
 
     <style type="text/css">
-
+        legend{
+        font-weight: bold !important;
+        }
     </style>
     <script type="text/javascript">
 
@@ -37,17 +39,68 @@
             </script>
         </includeIf>
     </ifMode>
-
-
     <div class="headers" style="text-align: center;">
         <h3 style="background:  #00b4ef; padding: 10px; color: #fff;">End of Followup Card</h3>
     </div>
-    <div>
-        Location:<encounterLocation default="SessionAttribute:emrContext.sessionLocationId"/>
-        Provider:<encounterProvider default="currentUser" />
-        Encounter Date:<encounterDate default="now" disallowMultipleEncountersOnDate="block"/>
+    <div style="display:none;">
+        <fieldset>
+            <legend>Encounter Details</legend>
+            <table>
+                <tr>
+                    <td>Health Facility Name:
+                        <encounterLocation default="SessionAttribute:emrContext.sessionLocationId"/>
+                    </td>
+                    <td>Name of individual registering patient:
+                        <encounterProvider default="currentUser"/>
+                    </td>
+                    <td>Date :
+                        <encounterDate default="now" disallowMultipleEncountersOnDate="block"/>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
     </div>
-
+    <div>
+        <fieldset>
+            <legend>End of Follow Up</legend>
+            <table>
+                <tr>
+                    <td style="width:50%;">
+                        Death:
+                        <obs conceptId="162574AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+                    </td>
+                    <td colspan="2"  style="width:50%;">
+                        Date:
+                        <obs conceptId="1543AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width:50%;">
+                        Lost to Follow-up(>3 months):
+                        <obs conceptId="160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/><!--TODO The concept ID is a placeholder and needs to be removed-->
+                    </td>
+                    <td colspan="2" style="width:50%;">
+                        Date of Last Visit:
+                        <obs conceptId="164093AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width:33%;">
+                       Transfered Out:
+                        <obs conceptId="160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/><!--TODO The concept ID is a placeholder and needs to be removed-->
+                    </td>
+                    <td style="width:33%;">
+                        Date:
+                        <obs conceptId="160649AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+                    </td>
+                    <td >
+                        Location:
+                        <obs conceptId="159495AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+    </div>
     <div>
         <ifMode mode="VIEW" include="false">
             <div class="buttons-container">

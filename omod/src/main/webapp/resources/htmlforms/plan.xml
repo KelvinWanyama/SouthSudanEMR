@@ -12,7 +12,9 @@
           formLabel="Plan Card">
 
     <style type="text/css">
-
+        legend{
+        font-weight: bold !important;
+        }
     </style>
     <script type="text/javascript">
 
@@ -21,7 +23,8 @@
         <includeIf velocityTest="$fn.allEncounters('22cc4ade-39dc-11e9-bd8d-23b7f6ce3c7f').size() == 0">
             <script>
                 jq(function () {
-                alert('This Patient has no initial form filled , you will now be forwarded to the patient dashboard to fill initial form first');
+                alert('This Patient has no initial form filled , you will now be forwarded to the patient dashboard to
+                fill initial form first');
 
                 var queryParameters = {}, queryString = location.search.substring(1),
                 re = /([^&amp;=]+)=([^&amp;]*)/g, m;
@@ -42,10 +45,72 @@
     <div class="headers" style="text-align: center;">
         <h3 style="background:  #00b4ef; padding: 10px; color: #fff;">Plan Card</h3>
     </div>
+    <div style="display:none;">
+        <fieldset>
+            <legend>Encounter Details</legend>
+            <table>
+                <tr>
+                    <td>Health Facility Name:
+                        <encounterLocation default="SessionAttribute:emrContext.sessionLocationId"/>
+                    </td>
+                    <td>Name of individual registering patient:
+                        <encounterProvider default="currentUser"/>
+                    </td>
+                    <td>Date :
+                        <encounterDate default="now" disallowMultipleEncountersOnDate="block"/>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+    </div>
     <div>
-        Location:<encounterLocation default="SessionAttribute:emrContext.sessionLocationId"/>
-        Provider:<encounterProvider default="currentUser" />
-        Encounter Date:<encounterDate default="now" disallowMultipleEncountersOnDate="block"/>
+        <fieldset style="width: 97%;">
+            <legend>Plan</legend>
+            <table>
+                <tr>
+                    <td style="width:50%;">
+                        Follow up Date:
+                        <obs conceptId="160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/><!--TODO The concept ID is a placeholder and needs to be removed-->
+                    </td>
+                    <td style="width:50%;"></td>
+                </tr>
+                <tr>
+                    <td style="width:50%;">
+                        Plan:
+                        <obs conceptId="160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/><!--TODO The concept ID is a placeholder and needs to be removed-->
+                    </td>
+                    <td style="width:50%;">
+                    </td>
+                </tr>
+                <tr rowspan="3">
+                    <td colspan="2">
+                        Notes:
+                        <obs conceptId="160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/><!--TODO The concept ID is a placeholder and needs to be removed-->
+                    </td>
+                </tr>
+                <tr></tr>
+                <tr></tr>
+                <tr>
+                    <td style="width:50%;">
+                        Hospitalized?:
+                        <obs conceptId="160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/><!--TODO The concept ID is a placeholder and needs to be removed-->
+                    </td>
+                    <td style="width:50%;">
+                        If yes, # days:
+                        <obs conceptId="160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/><!--TODO The concept ID is a placeholder and needs to be removed-->
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width:50%;">
+                        Clinician:
+                        <obs conceptId="160632AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/><!--TODO The concept ID is a placeholder and needs to be removed-->
+                    </td>
+                    <td style="width:50%;">
+                    </td>
+                </tr>
+
+            </table>
+        </fieldset>
     </div>
 
     <div>
