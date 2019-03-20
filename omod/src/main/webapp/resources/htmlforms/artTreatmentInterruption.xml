@@ -91,7 +91,6 @@
         }
         });
         });
-    </script>
     <ifMode mode="ENTER">
         <includeIf velocityTest="$fn.allEncounters('22cc4ade-39dc-11e9-bd8d-23b7f6ce3c7f').size() == 0">
             <script>

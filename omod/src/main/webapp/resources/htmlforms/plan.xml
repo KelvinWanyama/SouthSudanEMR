@@ -25,7 +25,7 @@
                 jq(function () {
                 alert('This Patient has no initial form filled , you will now be forwarded to the patient dashboard to
                 fill initial form first');
-
+                alert('This Patient has no initial form filled , you will now be forwarded to the patient dashboard to fill initial form first');
                 var queryParameters = {}, queryString = location.search.substring(1),
                 re = /([^&amp;=]+)=([^&amp;]*)/g, m;
 
